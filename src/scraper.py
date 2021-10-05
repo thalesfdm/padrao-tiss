@@ -25,13 +25,12 @@ class PadraoTissSpider(Spider):
 
     def save_pdf(self, response):
         print(f" > Scraping {response.url}")
-        path = (
-            "./data/pdf/"
-            + response.url.split("/")[-1].rsplit("_", 1)[0]
-            + "_latest.pdf"
+        dest_path = "./data/pdf/"
+        file_path = (
+            dest_path + response.url.split("/")[-1].rsplit("_", 1)[0] + "_latest.pdf"
         )
-        Path("./data/pdf/").mkdir(parents=True, exist_ok=True)
-        with open(path, "wb") as f:
+        Path(dest_path).mkdir(parents=True, exist_ok=True)
+        with open(file_path, "wb") as f:
             f.write(response.body)
             f.close()
 
