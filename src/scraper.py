@@ -44,7 +44,3 @@ def run():
     print("> Scraper running...")
     process.crawl(PadraoTissSpider)
     process.start()
-
-
-if __name__ == "__main__":
-    run()
