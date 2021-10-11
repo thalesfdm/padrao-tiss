@@ -9,7 +9,7 @@ def run(pages):
 
     pdf_file = "./data/pdf/padrao_tiss_componente_organizacional_latest.pdf"
 
-    dest_path = "./data/csv/"
+    dest_path = "./data/csv"
     Path(dest_path).mkdir(parents=True, exist_ok=True)
 
     multi_page = [page for page in pages if "-" in page]
@@ -43,11 +43,11 @@ def run(pages):
             tables[0].df = tables[0].df.append(last_table.df)
 
         tables[0].df.to_csv(
-            f"./data/csv/padrao_tiss-page-{first_page}-{last_page}-table-{tables[0].order}.csv",
+            f"{dest_path}/padrao_tiss-page-{first_page}-{last_page}-table-{tables[0].order}.csv",
             index=False,
             header=False,
             quoting=csv.QUOTE_ALL,
         )
 
     tables = camelot.read_pdf(pdf_file, pages=",".join(single_page), line_scale=30)
-    tables.export(dest_path + "padrao_tiss.csv", f="csv")
+    tables.export(f"{dest_path}/padrao_tiss.csv", f="csv")

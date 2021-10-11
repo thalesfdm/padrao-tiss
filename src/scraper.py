@@ -1,5 +1,7 @@
+import os
 from pathlib import Path
 
+import wget
 from scrapy import Spider
 from scrapy.crawler import CrawlerProcess
 
@@ -25,14 +27,17 @@ class PadraoTissSpider(Spider):
 
     def save_pdf(self, response):
         print(f" > Scraping {response.url}")
-        dest_path = "./data/pdf/"
+
+        dest_path = "./data/pdf"
         file_path = (
-            dest_path + response.url.split("/")[-1].rsplit("_", 1)[0] + "_latest.pdf"
+            f"{dest_path}/{response.url.split('/')[-1].rsplit('_', 1)[0]}_latest.pdf"
         )
+
         Path(dest_path).mkdir(parents=True, exist_ok=True)
-        with open(file_path, "wb") as f:
-            f.write(response.body)
-            f.close()
+        if os.path.isfile(file_path):
+            os.remove(file_path)
+
+        wget.download(response.url, file_path)
 
 
 process = CrawlerProcess(
