@@ -14,7 +14,7 @@ Recomenda-se utilizar um ambiente virtual, como o `virtualenv`, para mais inform
 Caso esteja utilizando o `virtualenv`:
 ```bash
 # criar o ambiente virtual
-virtualenv venv --python=python3.9.5
+virtualenv venv
 
 # ativar o ambiente virtual no linux (para outros sistemas consultar a documentação)
 source venv/bin/activate
@@ -36,5 +36,5 @@ Para rodar a aplicação, deve-se passar as páginas que serão processadas:
 # exemplo:
 # "108" e "114" para processar quadros individuais nas páginas 108 e 114
 # "109-114" para processar um quadro que inicia na página 109 e termina na página 114
-python run.py 108 109-114 114
+python3 run.py 108 109-114 114
 ```
