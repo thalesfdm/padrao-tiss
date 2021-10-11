@@ -1,5 +1,6 @@
 import csv
 from pathlib import Path
+import shutil
 
 import camelot
 
@@ -51,3 +52,7 @@ def run(pages):
 
     tables = camelot.read_pdf(pdf_file, pages=",".join(single_page), line_scale=30)
     tables.export(f"{dest_path}/padrao_tiss.csv", f="csv")
+
+    shutil.make_archive(
+        "Teste_Intuitive_Care_Thales_Felipe_Dal_Molim", "zip", dest_path
+    )
