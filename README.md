@@ -26,6 +26,12 @@ pip install -r requirements.txt
 ```
 
 Para rodar a aplicação, deve-se passar as páginas que serão processadas:
+
+> Quadro 30, página 108
+> 
+> Quadro 31, páginas 109 a 114
+> 
+> Quadro 32, página 114
 ```bash
 # exemplo:
 # "108" e "114" para processar quadros individuais nas páginas 108 e 114
